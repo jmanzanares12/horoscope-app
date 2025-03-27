@@ -1,11 +1,13 @@
+import { BrowserRouter } from "react-router-dom"
 
 function App() {
 
-
   return (
-    <>
-      <h1 className="text-4xl font-bold">Horoscope</h1>
-    </>
+    <div>
+      <BrowserRouter>
+        <Routes path='/' element={<Home />} />
+      </BrowserRouter>
+    </div>
   )
 }
 
