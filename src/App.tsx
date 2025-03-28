@@ -4,7 +4,7 @@ import Home from "./views/Home"
 function App() {
 
   return (
-    <div>
+    <div className="overflow-y-auto max-h-full p-12">
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
