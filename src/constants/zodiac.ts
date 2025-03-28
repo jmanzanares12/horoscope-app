@@ -1,3 +1,4 @@
+import { Zodiac } from "../types/zodiac";
 
 export const ZODIAC_NAMES = [
     'Aries',
@@ -12,4 +13,4 @@ export const ZODIAC_NAMES = [
     'Capricorn',
     'Aquarius',
     'Pisces',
-]
+] as Zodiac[];
