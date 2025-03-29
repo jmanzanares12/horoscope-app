@@ -2,7 +2,7 @@ import ZodiacDetails from "../components/ZodiacDetails"
 
 const Details = () => {
     return (
-        <ZodiacDetails />
+        <ZodiacDetails/>
     )
 }
 
