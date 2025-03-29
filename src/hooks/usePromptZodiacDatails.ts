@@ -20,24 +20,20 @@ const generatePrompt = (zodiac?: Zodiac) => {
 const usePromptZodiacDatails = (zodiac?: Zodiac) => {
     const [data, setData] = useState<string | null>(null);
 
-    const apiRequestBody = useMemo(() => {
-        if (!zodiac) return null; 
-        
-        return {
-            model: 'gpt-3.5-turbo',
-            messages: [
-                systemPrompt,
-                generatePrompt(zodiac),
-            ],
-        };
-    }, [zodiac]);
+    const apiRequestBody = useMemo(() => ({
+        model: 'gpt-3.5-turbo',
+        messages: [
+            systemPrompt,
+            generatePrompt(zodiac),
+        ],
+    }), [zodiac]);
 
     useEffect(() => {
-        if (!apiRequestBody) return; // Si no hay datos para enviar, no hacer la solicitud
-
+        if (!apiRequestBody) return;
         const abortController = new AbortController();
 
         const fetchData = async () => {
+            if (!zodiac) return null;
             try {
                 const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
@@ -46,7 +42,7 @@ const usePromptZodiacDatails = (zodiac?: Zodiac) => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(apiRequestBody),
-                    signal: abortController.signal, 
+                    signal: abortController.signal,
                 });
 
                 if (!response.ok) {
@@ -54,24 +50,19 @@ const usePromptZodiacDatails = (zodiac?: Zodiac) => {
                     throw new Error(`Error ${response.status}: ${errorText}`);
                 }
 
-                const responseData = await response.json();
-                setData(responseData.choices[0]?.message?.content || 'No response from API');
-            } catch (error) {
-                if (Error.name === 'AbortError') {
-                    console.log('Request aborted');
-                } else {
-                    console.error('Fetch data error:', error);
-                    setData('Error fetching data');
-                }
+                const data = await response.json();
+                setData(data.choices[0]?.message?.content || 'No response from API');
             }
-        };
-
+            catch (error) {
+                console.error('Fetch data error:', error);
+                setData('Error fetching data');
+            }
+        }
         fetchData();
-
-        return () => abortController.abort(); // Cancela la solicitud si el componente se desmonta
-    }, [apiRequestBody]);
+        return () => abortController.abort();
+    }, [apiRequestBody, zodiac]);
 
     return data;
-};
+}
 
 export default usePromptZodiacDatails;
