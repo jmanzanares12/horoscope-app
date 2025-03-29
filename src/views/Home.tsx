@@ -3,7 +3,7 @@ import { ZODIAC_NAMES } from "../constants/zodiac"
 
 const Home = () => {
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-20 p-10">
             {ZODIAC_NAMES.map((zodiac) => (
                 <ZodiacCard
                     key={zodiac}

@@ -25,7 +25,6 @@ const imgMap: Record<string, string> = {
     scorpio: scorpio,
     taurus: taurus,
     virgo: virgo,
-
 }
 
 export const getZodiacImage = (zodiac: Zodiac) : string => imgMap[zodiac.toLowerCase()] || '';
