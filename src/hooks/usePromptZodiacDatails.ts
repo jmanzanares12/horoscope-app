@@ -21,8 +21,8 @@ const usePromptZodiacDatails = (zodiac?: Zodiac) => {
     const [data, setData] = useState<string | null>(null);
 
     const apiRequestBody = useMemo(() => {
-        if (!zodiac) return null; // Si zodiac es null, evita generar el objeto
-
+        if (!zodiac) return null; 
+        
         return {
             model: 'gpt-3.5-turbo',
             messages: [
