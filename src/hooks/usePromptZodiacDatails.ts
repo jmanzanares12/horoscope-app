@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { Zodiac } from "../types/zodiac";
 
-const OPENAI_API_KEY = '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';
+{/*const OPENAI_API_KEY = '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'; */}
 
 const systemPrompt = {
     role: "system",
