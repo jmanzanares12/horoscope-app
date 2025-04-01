@@ -7,6 +7,6 @@ export default defineConfig({
   base: '/horoscope-app/',
   plugins: [
     react(),
-    tailwindcss(),
+    tailwindcss()
   ],
 })
