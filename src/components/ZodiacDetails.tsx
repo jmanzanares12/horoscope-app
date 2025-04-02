@@ -15,11 +15,7 @@ const ZodiacDetails = () => {
             justify-center items-center backdrop-blur-xl shadow-xl m-auto ">
             <img src={imgSrc} alt={zodiac} className="w-36 h-36 rounded-full mb-4" />
             <h1 className="text-4xl font-bold text-white mt-2 mb-2">{zodiac}</h1>
-
             <p className="text-center text-white font-semibold mt-2 mb-2">{data}</p>
-
-            {data && <p className="text-center text-white font-semibold mt-2 mb-2">{data}</p>}
-
             <Link to='/'><button className="bg-white text-black rounded-lg px-4 py-2 mt-4">Back</button></Link>
         </div>
     )
