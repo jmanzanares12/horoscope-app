@@ -8,7 +8,7 @@ import { useLocalZodiacDetails } from "../hooks/useLocalZodiacDetails";
 const ZodiacDetails = () => {
     const { zodiac } = useParams();
     const imgSrc = useMemo(() => getZodiacImage(zodiac as Zodiac), [zodiac]);
-    const data = useLocalZodiacDetails(zodiac as Zodiac) || 'No data found'; // Usamos la función de hook local para obtener los datos
+    const data = useLocalZodiacDetails(zodiac as Zodiac);
 
     return (
         <div className="w-3/4 p-12 rounded-lg border-1 border-gray-700 flex flex-col 
